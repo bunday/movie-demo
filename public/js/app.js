@@ -19538,8 +19538,56 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "h-screen bg-white" }, [
-      _c("div", { staticClass: "flex" })
+    return _c("div", { staticClass: "h-screen bg-gray-900 text-white" }, [
+      _c("div", { staticClass: "flex flex-col" }, [
+        _c("div", { staticClass: "bg-purple-500 px-16 py-4 w-full" }, [
+          _c("div", { staticClass: "flex justify-between" }, [
+            _c("p", { staticClass: "text-white" }, [_vm._v("Movies")]),
+            _vm._v(" "),
+            _c("p", { staticClass: "rounded-lg shadow p-2 bg-purple-700" }, [
+              _vm._v("Add a Movie")
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "flex w-full px-16 py-4" }, [
+          _c("div", { staticClass: "w-1/6" }, [
+            _c("div", { staticClass: "h-48 w-32" }, [
+              _c("img", { attrs: { src: "/images/default.png" } })
+            ]),
+            _vm._v(" "),
+            _c("div", [
+              _c("p", { staticClass: "text-lg" }, [_vm._v("Movie Title")]),
+              _vm._v(" "),
+              _c("p", { staticClass: "text-gray-500 text-sm" }, [
+                _vm._v("Drama, Thriller")
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "w-2/6" }, [
+            _c("p", [_vm._v("Save a New Movie")]),
+            _vm._v(" "),
+            _c("div", [
+              _c("div", { staticClass: "my-4" }, [
+                _c(
+                  "p",
+                  { staticClass: "block text-gray-300 text-sm font-bold mb-2" },
+                  [_vm._v("Movie Title")]
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "flex" }, [
+                  _c("input", {
+                    staticClass:
+                      "shadow appearance-none w-full h-10 border bg-gray-200 rounded py-2 px-3 text-gray-800 leading-tight focus:outline-none focus:shadow-outline",
+                    attrs: { placeholder: "Movie Title" }
+                  })
+                ])
+              ])
+            ])
+          ])
+        ])
+      ])
     ])
   }
 ]
