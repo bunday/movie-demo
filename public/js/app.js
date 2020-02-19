@@ -1925,7 +1925,142 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-/* harmony default export */ __webpack_exports__["default"] = ({});
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      title: "",
+      image: "",
+      release_date: "",
+      rating: "",
+      price: "",
+      country: "",
+      genre: "",
+      description: ""
+    };
+  },
+  methods: {
+    onImageChange: function onImageChange(e) {
+      this.image = e.target.files[0];
+    },
+    formSubmit: function formSubmit(e) {
+      e.preventDefault();
+      var currentObj = this;
+      var config = {
+        headers: {
+          "content-type": "multipart/form-data"
+        }
+      };
+      var formData = new FormData();
+      formData.append("image", this.image);
+      formData.append("title", this.title);
+      formData.append("release_date", this.release_date);
+      formData.append("rating", this.rating);
+      formData.append("price", this.price);
+      formData.append("country", this.country);
+      formData.append("genre", this.genre);
+      formData.append("description", this.description);
+      axios.post("/api/movies", formData, config).then(function (response) {
+        console.log(response); // Redirect to list of movies
+      })["catch"](function (error) {
+        console.log(error);
+        console.log(error.response.data.data);
+        var errorObj = error.response.data.data;
+      });
+    }
+  }
+});
 
 /***/ }),
 
@@ -1950,7 +2085,30 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-/* harmony default export */ __webpack_exports__["default"] = ({});
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  mounted: function mounted() {
+    var _this = this;
+
+    axios.get("/api/movies").then(function (response) {
+      _this.movies = response.data.data;
+    })["catch"](function (error) {
+      alert("Something went wrong");
+    })["finally"](function () {
+      return _this.loading = false;
+    });
+  },
+  data: function data() {
+    return {
+      movies: [],
+      loading: true
+    };
+  }
+});
 
 /***/ }),
 
@@ -19610,33 +19768,305 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", [
+    _c("p", [_vm._v("Create a New Movie")]),
+    _vm._v(" "),
+    _c("div", [
+      _c(
+        "form",
+        {
+          attrs: { enctype: "multipart/form-data" },
+          on: { submit: _vm.formSubmit }
+        },
+        [
+          _c("div", { staticClass: "my-4" }, [
+            _c(
+              "p",
+              { staticClass: "block text-gray-300 text-sm font-bold mb-2" },
+              [_vm._v("Title")]
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "flex" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.title,
+                    expression: "title"
+                  }
+                ],
+                staticClass:
+                  "shadow appearance-none w-full h-10 border bg-gray-200 rounded py-2 px-3 text-gray-800 leading-tight focus:outline-none focus:shadow-outline",
+                attrs: { placeholder: "Title", required: "" },
+                domProps: { value: _vm.title },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.title = $event.target.value
+                  }
+                }
+              })
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "my-4" }, [
+            _c(
+              "p",
+              { staticClass: "block text-gray-300 text-sm font-bold mb-2" },
+              [_vm._v("Poster")]
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "flex" }, [
+              _c("input", {
+                staticClass:
+                  "shadow appearance-none w-full h-10 border bg-gray-200 rounded py-2 px-3 text-gray-800 leading-tight focus:outline-none focus:shadow-outline",
+                attrs: { type: "file", required: "" },
+                on: { change: _vm.onImageChange }
+              })
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "my-4" }, [
+            _c(
+              "p",
+              { staticClass: "block text-gray-300 text-sm font-bold mb-2" },
+              [_vm._v("Release Date")]
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "flex" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.release_date,
+                    expression: "release_date"
+                  }
+                ],
+                staticClass:
+                  "shadow appearance-none w-full h-10 border bg-gray-200 rounded py-2 px-3 text-gray-800 leading-tight focus:outline-none focus:shadow-outline",
+                attrs: { type: "date", required: "" },
+                domProps: { value: _vm.release_date },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.release_date = $event.target.value
+                  }
+                }
+              })
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "my-4" }, [
+            _c(
+              "p",
+              { staticClass: "block text-gray-300 text-sm font-bold mb-2" },
+              [_vm._v("Rating")]
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "flex" }, [
+              _c(
+                "select",
+                {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.rating,
+                      expression: "rating"
+                    }
+                  ],
+                  staticClass:
+                    "shadow appearance-none w-full h-10 border bg-gray-200 rounded py-2 px-3 text-gray-800 leading-tight focus:outline-none focus:shadow-outline",
+                  attrs: { required: "" },
+                  on: {
+                    change: function($event) {
+                      var $$selectedVal = Array.prototype.filter
+                        .call($event.target.options, function(o) {
+                          return o.selected
+                        })
+                        .map(function(o) {
+                          var val = "_value" in o ? o._value : o.value
+                          return val
+                        })
+                      _vm.rating = $event.target.multiple
+                        ? $$selectedVal
+                        : $$selectedVal[0]
+                    }
+                  }
+                },
+                [
+                  _c("option", [_vm._v("1")]),
+                  _vm._v(" "),
+                  _c("option", [_vm._v("2")]),
+                  _vm._v(" "),
+                  _c("option", [_vm._v("3")]),
+                  _vm._v(" "),
+                  _c("option", [_vm._v("4")]),
+                  _vm._v(" "),
+                  _c("option", [_vm._v("5")])
+                ]
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "my-4" }, [
+            _c(
+              "p",
+              { staticClass: "block text-gray-300 text-sm font-bold mb-2" },
+              [_vm._v("Price")]
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "flex" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.price,
+                    expression: "price"
+                  }
+                ],
+                staticClass:
+                  "shadow appearance-none w-full h-10 border bg-gray-200 rounded py-2 px-3 text-gray-800 leading-tight focus:outline-none focus:shadow-outline",
+                attrs: { type: "number", required: "" },
+                domProps: { value: _vm.price },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.price = $event.target.value
+                  }
+                }
+              })
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "my-4" }, [
+            _c(
+              "p",
+              { staticClass: "block text-gray-300 text-sm font-bold mb-2" },
+              [_vm._v("Country")]
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "flex" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.country,
+                    expression: "country"
+                  }
+                ],
+                staticClass:
+                  "shadow appearance-none w-full h-10 border bg-gray-200 rounded py-2 px-3 text-gray-800 leading-tight focus:outline-none focus:shadow-outline",
+                attrs: { type: "text", required: "" },
+                domProps: { value: _vm.country },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.country = $event.target.value
+                  }
+                }
+              })
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "my-4" }, [
+            _c(
+              "p",
+              { staticClass: "block text-gray-300 text-sm font-bold mb-2" },
+              [_vm._v("Genre")]
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "flex" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.genre,
+                    expression: "genre"
+                  }
+                ],
+                staticClass:
+                  "shadow appearance-none w-full h-10 border bg-gray-200 rounded py-2 px-3 text-gray-800 leading-tight focus:outline-none focus:shadow-outline",
+                attrs: { type: "text", required: "" },
+                domProps: { value: _vm.genre },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.genre = $event.target.value
+                  }
+                }
+              })
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "my-4" }, [
+            _c(
+              "p",
+              { staticClass: "block text-gray-300 text-sm font-bold mb-2" },
+              [_vm._v("Description")]
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "flex" }, [
+              _c("textarea", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.description,
+                    expression: "description"
+                  }
+                ],
+                staticClass:
+                  "shadow appearance-none w-full border bg-gray-200 rounded py-2 px-3 text-gray-800 leading-tight focus:outline-none focus:shadow-outline",
+                attrs: { rows: "5", required: "" },
+                domProps: { value: _vm.description },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.description = $event.target.value
+                  }
+                }
+              })
+            ])
+          ]),
+          _vm._v(" "),
+          _vm._m(0)
+        ]
+      )
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", [
-      _c("p", [_vm._v("Save a New Movie")]),
-      _vm._v(" "),
-      _c("div", [
-        _c("div", { staticClass: "my-4" }, [
-          _c(
-            "p",
-            { staticClass: "block text-gray-300 text-sm font-bold mb-2" },
-            [_vm._v("Movie Title")]
-          ),
-          _vm._v(" "),
-          _c("div", { staticClass: "flex" }, [
-            _c("input", {
-              staticClass:
-                "shadow appearance-none w-full h-10 border bg-gray-200 rounded py-2 px-3 text-gray-800 leading-tight focus:outline-none focus:shadow-outline",
-              attrs: { placeholder: "Movie Title" }
-            })
-          ])
-        ])
-      ])
+    return _c("div", { staticClass: "my-4" }, [
+      _c(
+        "button",
+        {
+          staticClass: "px-4 rounded-md text-center text-lg py-2 bg-purple-500",
+          attrs: { type: "submit" }
+        },
+        [_vm._v("Create")]
+      )
     ])
   }
 ]
@@ -19661,28 +20091,33 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", [
+    _vm.loading
+      ? _c("div", [_vm._v("loading")])
+      : _c(
+          "div",
+          _vm._l(_vm.movies, function(movie) {
+            return _c("div", { key: movie.id }, [
+              _c("div", { staticClass: "h-48 w-32" }, [
+                _c("img", { attrs: { src: movie.image } })
+              ]),
+              _vm._v(" "),
+              _c("div", [
+                _c("p", { staticClass: "text-lg" }, [
+                  _vm._v(_vm._s(movie.title))
+                ]),
+                _vm._v(" "),
+                _c("p", { staticClass: "text-gray-500 text-sm" }, [
+                  _vm._v(_vm._s(movie.genre))
+                ])
+              ])
+            ])
+          }),
+          0
+        )
+  ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", [
-      _c("div", { staticClass: "h-48 w-32" }, [
-        _c("img", { attrs: { src: "/images/default.png" } })
-      ]),
-      _vm._v(" "),
-      _c("div", [
-        _c("p", { staticClass: "text-lg" }, [_vm._v("Movie Title")]),
-        _vm._v(" "),
-        _c("p", { staticClass: "text-gray-500 text-sm" }, [
-          _vm._v("Drama, Thriller")
-        ])
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
