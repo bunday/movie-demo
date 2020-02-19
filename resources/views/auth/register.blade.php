@@ -11,7 +11,7 @@
                 <form method="POST" action="{{ route('register') }}">
                     @csrf
                     <div class="my-4">
-                        <p class="block text-gray-300 text-sm font-bold mb-2">Name </p>
+                        <p class="block text-gray-700 text-sm font-bold mb-2">Name </p>
                         <div class="flex flex-col">
                           <input
                             class="shadow appearance-none @error('name') border-red-200 @enderror  w-full h-10 border bg-gray-200 rounded py-2 px-3 text-gray-800 leading-tight focus:outline-none focus:shadow-outline"
@@ -26,7 +26,7 @@
                         </div>
                       </div>
                       <div class="my-4">
-                        <p class="block text-gray-300 text-sm font-bold mb-2">E-Mail </p>
+                        <p class="block text-gray-700 text-sm font-bold mb-2">E-Mail </p>
                         <div class="flex flex-col">
                           <input
                             class="shadow appearance-none @error('email') border-red-200 @enderror  w-full h-10 border bg-gray-200 rounded py-2 px-3 text-gray-800 leading-tight focus:outline-none focus:shadow-outline"
@@ -41,7 +41,7 @@
                         </div>
                       </div>
                       <div class="my-4">
-                        <p class="block text-gray-300 text-sm font-bold mb-2">Password </p>
+                        <p class="block text-gray-700 text-sm font-bold mb-2">Password </p>
                         <div class="flex flex-col">
                           <input
                             class="shadow appearance-none @error('password') border-red-200 @enderror  w-full h-10 border bg-gray-200 rounded py-2 px-3 text-gray-800 leading-tight focus:outline-none focus:shadow-outline"
@@ -56,7 +56,7 @@
                         </div>
                       </div>
                       <div class="my-4">
-                        <p class="block text-gray-300 text-sm font-bold mb-2">Confirm Password </p>
+                        <p class="block text-gray-700 text-sm font-bold mb-2">Confirm Password </p>
                         <div class="flex flex-col">
                           <input
                             class="shadow appearance-none w-full h-10 border bg-gray-200 rounded py-2 px-3 text-gray-800 leading-tight focus:outline-none focus:shadow-outline"
