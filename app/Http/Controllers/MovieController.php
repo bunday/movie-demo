@@ -6,7 +6,7 @@ use Auth;
 use App\Movie;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-use App\Http\Controllers\ResponseController;
+use App\Http\Resources\Movie as AppMovie;
 
 class MovieController extends Controller
 {
@@ -34,7 +34,7 @@ class MovieController extends Controller
      */
     public function index()
     {
-        return Movie::collection();
+        return AppMovie::collection(Movie::all());
     }
 
     /**
