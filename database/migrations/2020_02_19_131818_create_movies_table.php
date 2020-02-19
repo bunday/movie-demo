@@ -24,6 +24,7 @@ class CreateMoviesTable extends Migration
             $table->string('genre');
             $table->string('image');
             $table->integer('user_id');
+            $table->string('slug');
             $table->timestamps();
         });
     }

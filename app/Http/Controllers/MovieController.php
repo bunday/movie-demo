@@ -7,6 +7,7 @@ use App\Movie;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Resources\Movie as AppMovie;
+use Illuminate\Support\Str;
 
 class MovieController extends Controller
 {
@@ -60,8 +61,9 @@ class MovieController extends Controller
             }
 
             //Add User ID and the image to the data
-            $data['user_id'] = Auth::id();
+            $data['user_id'] = 1;//Auth::id();
             $data['image'] = $location;
+            $data['slug'] = Str::slug($data['title'],'_');
             //Save to DB
             Movie::create($data);
             //return success
@@ -79,7 +81,7 @@ class MovieController extends Controller
      */
     public function show(Movie $movie)
     {
-        //
+        return $this->successCreationWithData("Movie Fetched", new AppMovie($movie));
     }
 
 
@@ -88,5 +90,8 @@ class MovieController extends Controller
     }
     public function successCreationWithoutData($message){
         return response()->json(['status'=>'success','message'=>$message],201);
+    }
+    public function successCreationWithData($message,$data){
+        return response()->json(['status'=>'success','message'=>$message,'data'=>$data],201);
     }
 }
