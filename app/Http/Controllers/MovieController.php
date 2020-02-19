@@ -52,7 +52,7 @@ class MovieController extends Controller
             //Move the image somewhere if it exist
             $image = $request->image;
             $tag = time();
-            $location = '/images/films/default.png';
+            $location = '/images/default.png';
             if(!is_null($image)){
                 $filename =  $tag. '.' . $image->getClientOriginalExtension();
                 $image->move(public_path('/images/films/'), $filename);
@@ -65,6 +65,7 @@ class MovieController extends Controller
             //Save to DB
             Movie::create($data);
             //return success
+            return $this->successCreationWithoutData('Movie created succeessfully');
         }
         //return error response
         return $this->formError($validity);
@@ -81,7 +82,11 @@ class MovieController extends Controller
         //
     }
 
+
     public function formError($message){
         return response()->json(['status'=>'fail','message'=>'Oops! looks like there is an error in the Uploaded form','data'=>$message],400);
+    }
+    public function successCreationWithoutData($message){
+        return response()->json(['status'=>'success','message'=>$message],201);
     }
 }

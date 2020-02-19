@@ -16,7 +16,7 @@ class CreateMoviesTable extends Migration
         Schema::create('movies', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('title');
-            $table->longText('decription');
+            $table->longText('description');
             $table->date('release_date');
             $table->enum('rating',[1,2,3,4,5]);
             $table->float('price');
