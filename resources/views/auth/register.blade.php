@@ -4,9 +4,10 @@
 <div class="mx-auto h-full flex justify-center items-center bg-gray-900">
     <div class="flex w-full px-48">
         <div class="bg-white rounded p-4 shadow-lg w-full">
+
+            <div class="px-8 py-4">
             <div class="text-xl">{{ __('Register') }}</div>
 
-            <div class="pt-8">
                 <form method="POST" action="{{ route('register') }}">
                     @csrf
                     <div class="my-4">
@@ -65,7 +66,8 @@
                         </div>
                       </div>
 
-                    <div class="flex justify-end">
+                    <div class="flex justify-between">
+                        <a class="text-purple-500" href="/login">I already have an Account</a>
                         <button type="submit" class="bg-purple-500 text-lg rounded text-white px-4 py-2">
                             Register
                         </button>
