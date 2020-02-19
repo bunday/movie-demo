@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Comment;
 use Auth;
 use App\Movie;
 use Illuminate\Http\Request;
@@ -82,6 +83,12 @@ class MovieController extends Controller
     public function show(Movie $movie)
     {
         return $this->successCreationWithData("Movie Fetched", new AppMovie($movie));
+    }
+    public function commentOnMovie(Request $request){
+        $data = $request->all();
+        $data['user_id'] = Auth::id();
+        Comment::create($data);
+        return $this->successCreationWithoutData('Comment added succeessfully');
     }
 
 
