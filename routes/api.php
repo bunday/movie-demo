@@ -13,10 +13,9 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::middleware('auth:api')->group(function () {
+    Route::post('/movies', 'MovieController@store');
+    Route::get('/movies', 'MovieController@index');
+    Route::get('/movies/{movie}', 'MovieController@show');
+    Route::post('/movies/comment', 'MovieController@commentOnMovie');
 });
-Route::post('/movies','MovieController@store');
-Route::get('/movies','MovieController@index');
-Route::get('/movies/{movie}','MovieController@show');
-Route::post('/movies/comment','MovieController@commentOnMovie');
