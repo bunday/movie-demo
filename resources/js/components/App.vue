@@ -7,7 +7,7 @@
           <router-link to="/movies/create" class="rounded-lg shadow p-2 bg-purple-700">Add a Movie</router-link>
         </div>
       </div>
-      <div class="flex w-full px-16 py-4">
+      <div class="flex w-full py-4">
         <router-view class="p-6 overflow-x-hidden w-full"></router-view>
       </div>
     </div>

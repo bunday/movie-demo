@@ -19904,7 +19904,7 @@ var render = function() {
       _vm._v(" "),
       _c(
         "div",
-        { staticClass: "flex w-full px-16 py-4" },
+        { staticClass: "flex w-full py-4" },
         [_c("router-view", { staticClass: "p-6 overflow-x-hidden w-full" })],
         1
       )
@@ -19936,7 +19936,7 @@ var render = function() {
   return _c("div", [
     _c("p", [_vm._v("Create a New Movie")]),
     _vm._v(" "),
-    _c("div", { staticClass: "px-48" }, [
+    _c("div", { staticClass: "flex container mx-4 lg:mx-48" }, [
       _c(
         "form",
         {
@@ -20256,14 +20256,14 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "flex px-48 flex-col" }, [
-    _c("div", { staticClass: "flex justify-start" }, [
+  return _c("div", { staticClass: "flex mx-4 flex-col" }, [
+    _c("div", { staticClass: "flex flex-col md:flex-row" }, [
       _c("img", {
-        staticClass: "h-64 w-full object-cover",
+        staticClass: "h-full w-full md:w-1/2 object-cover",
         attrs: { src: _vm.movie.image }
       }),
       _vm._v(" "),
-      _c("div", { staticClass: "px-4" }, [
+      _c("div", { staticClass: "md:px-4 w-full md:w-1/2" }, [
         _c("div", { staticClass: "flex flex-col leading-loose" }, [
           _c("p", { staticClass: "text-purple-500 font-bold text-lg" }, [
             _vm._v(_vm._s(_vm.movie.title))
@@ -20321,10 +20321,10 @@ var render = function() {
     _c("div", { staticClass: "py-4" }, [
       _c("p", { staticClass: "text-white text-xl" }, [_vm._v("Comments")]),
       _vm._v(" "),
-      _c("div", { staticClass: "flex" }, [
+      _c("div", { staticClass: "flex flex-col md:flex-row" }, [
         _c(
           "div",
-          { staticClass: "w-1/2 mx-2" },
+          { staticClass: "md:w-1/2 w-full mx-2" },
           [
             _vm.movie.comments.length < 1
               ? _c("div", [
@@ -20352,7 +20352,7 @@ var render = function() {
           2
         ),
         _vm._v(" "),
-        _c("div", { staticClass: "w-1/2 mx-2" }, [
+        _c("div", { staticClass: "md:w-1/2 w-full mx-2" }, [
           _c("form", { on: { submit: _vm.formSubmit } }, [
             _c("div", { staticClass: "mb-4" }, [
               _c(
@@ -20437,7 +20437,9 @@ var render = function() {
       ? _c("div", [_vm._v("loading")])
       : _c(
           "div",
-          { staticClass: "grid grid-cols-4 gap-4" },
+          {
+            staticClass: "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2"
+          },
           _vm._l(_vm.movies, function(movie) {
             return _c(
               "router-link",
@@ -20448,7 +20450,7 @@ var render = function() {
               },
               [
                 _c("img", {
-                  staticClass: "h-64 w-full object-cover",
+                  staticClass: "h-64 lg:h-full w-full object-cover",
                   attrs: { src: movie.image }
                 }),
                 _vm._v(" "),

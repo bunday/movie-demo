@@ -1,8 +1,8 @@
 <template>
-  <div class="flex px-48 flex-col">
-    <div class="flex justify-start">
-      <img class="h-64 w-full object-cover" :src="movie.image" />
-      <div class="px-4">
+  <div class="flex mx-4 flex-col">
+    <div class="flex flex-col md:flex-row">
+      <img class="h-full w-full md:w-1/2 object-cover" :src="movie.image" />
+      <div class="md:px-4 w-full md:w-1/2">
         <div class="flex flex-col leading-loose">
           <p class="text-purple-500 font-bold text-lg">{{movie.title}}</p>
 
@@ -35,8 +35,8 @@
     </div>
     <div class="py-4">
       <p class="text-white text-xl">Comments</p>
-      <div class="flex">
-        <div class="w-1/2 mx-2">
+      <div class="flex flex-col md:flex-row">
+        <div class="md:w-1/2 w-full mx-2">
             <div v-if="movie.comments.length < 1">
                 No Comments yet ...
             </div>
@@ -48,7 +48,7 @@
             <p class="text-sm text-right">{{ comment.created }}</p>
           </div>
         </div>
-        <div class="w-1/2 mx-2">
+        <div class="md:w-1/2 w-full mx-2">
           <form @submit="formSubmit">
             <div class="mb-4">
               <p class="block text-gray-300 text-sm font-bold mb-2">Add a New Comment</p>
