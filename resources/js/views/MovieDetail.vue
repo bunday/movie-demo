@@ -1,7 +1,7 @@
 <template>
   <div class="flex px-48 flex-col">
     <div class="flex justify-start">
-      <img src="/images/default.png" />
+      <img class="h-64 w-full object-cover" :src="movie.image" />
       <div class="px-4">
         <div class="flex flex-col leading-loose">
           <p class="text-purple-500 font-bold text-lg">{{movie.title}}</p>
@@ -37,7 +37,10 @@
       <p class="text-white text-xl">Comments</p>
       <div class="flex">
         <div class="w-1/2 mx-2">
-          <div class="py-2" v-for="comment in movie.comments" v-bind:key="comment.id">
+            <div v-if="movie.comments.length < 1">
+                No Comments yet ...
+            </div>
+          <div v-else class="py-2" v-for="comment in movie.comments" v-bind:key="comment.id">
             <p>
               <span class="font-bold">{{comment.name}}:</span>
               {{ comment.content}}
@@ -77,7 +80,6 @@ export default {
     axios
       .get("/api/movies/" + this.$route.params.slug)
       .then(response => {
-        console.log(response);
         this.movie = response.data.data;
         this.loading = false;
       })
