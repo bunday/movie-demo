@@ -2,13 +2,13 @@
   <div >
     <div v-if="loading">loading</div>
     <div class="grid grid-cols-4 gap-4" v-else>
-      <div class="mx-2 border border-purple-500 rounded-md" v-for="movie in movies" v-bind:key="movie.id">
+      <router-link :to="'/movies/' + movie.slug" class="mx-2 border border-purple-500 rounded-md" v-for="movie in movies" v-bind:key="movie.id">
         <img class="h-64 w-full object-cover" :src="movie.image"/>
         <div class="p-4">
           <p class="text-lg">{{ movie.title }}</p>
           <p class="text-gray-500 text-sm">{{ movie.genre }}</p>
         </div>
-      </div>
+      </router-link>
     </div>
   </div>
 </template>

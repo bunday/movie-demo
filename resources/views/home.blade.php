@@ -1,5 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-<App></App>
+{{ auth()->user() }}
+<App :user="{{ auth()->user() }}"></App>
 @endsection
