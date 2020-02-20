@@ -1908,12 +1908,6 @@ module.exports = {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 //
 //
 //
@@ -1935,14 +1929,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     var _this = this;
 
     window.axios.interceptors.request.use(function (config) {
-      if (config.method === "get") {
-        config.url += "?api_token=" + _this.user.api_token;
-      } else {
-        config.data = _objectSpread({}, config.data, {
-          api_token: _this.user.api_token
-        });
-      }
-
+      config.url += "?api_token=" + _this.user.api_token;
       return config;
     });
   }
@@ -2199,12 +2186,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     var _this = this;
 
     axios.get("/api/movies/" + this.$route.params.slug).then(function (response) {
-      console.log(response);
       _this.movie = response.data.data;
       _this.loading = false;
     })["catch"](function (error) {
@@ -20269,7 +20258,10 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "flex px-48 flex-col" }, [
     _c("div", { staticClass: "flex justify-start" }, [
-      _c("img", { attrs: { src: "/images/default.png" } }),
+      _c("img", {
+        staticClass: "h-64 w-full object-cover",
+        attrs: { src: _vm.movie.image }
+      }),
       _vm._v(" "),
       _c("div", { staticClass: "px-4" }, [
         _c("div", { staticClass: "flex flex-col leading-loose" }, [
@@ -20333,23 +20325,31 @@ var render = function() {
         _c(
           "div",
           { staticClass: "w-1/2 mx-2" },
-          _vm._l(_vm.movie.comments, function(comment) {
-            return _c("div", { key: comment.id, staticClass: "py-2" }, [
-              _c("p", [
-                _c("span", { staticClass: "font-bold" }, [
-                  _vm._v(_vm._s(comment.name) + ":")
-                ]),
-                _vm._v(
-                  "\n            " + _vm._s(comment.content) + "\n          "
-                )
-              ]),
-              _vm._v(" "),
-              _c("p", { staticClass: "text-sm text-right" }, [
-                _vm._v(_vm._s(comment.created))
-              ])
-            ])
-          }),
-          0
+          [
+            _vm.movie.comments.length < 1
+              ? _c("div", [
+                  _vm._v("\n              No Comments yet ...\n          ")
+                ])
+              : _vm._l(_vm.movie.comments, function(comment) {
+                  return _c("div", { key: comment.id, staticClass: "py-2" }, [
+                    _c("p", [
+                      _c("span", { staticClass: "font-bold" }, [
+                        _vm._v(_vm._s(comment.name) + ":")
+                      ]),
+                      _vm._v(
+                        "\n            " +
+                          _vm._s(comment.content) +
+                          "\n          "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("p", { staticClass: "text-sm text-right" }, [
+                      _vm._v(_vm._s(comment.created))
+                    ])
+                  ])
+                })
+          ],
+          2
         ),
         _vm._v(" "),
         _c("div", { staticClass: "w-1/2 mx-2" }, [
