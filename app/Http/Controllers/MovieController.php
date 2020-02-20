@@ -87,7 +87,6 @@ class MovieController extends Controller
     public function commentOnMovie(Request $request){
         $data = $request->all();
         $data['user_id'] = Auth::id();
-        dd(Auth::user());
         Comment::create($data);
         return $this->successCreationWithoutData('Comment added succeessfully');
     }
