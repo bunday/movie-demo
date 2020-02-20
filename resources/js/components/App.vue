@@ -1,5 +1,5 @@
 <template>
-  <div class="h-screen bg-gray-900 text-white">
+  <div class="h-screen text-white">
     <div class="flex flex-col">
       <div class="bg-purple-500 px-16 py-4 w-full">
         <div class="flex justify-between">

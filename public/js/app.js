@@ -2053,6 +2053,8 @@ __webpack_require__.r(__webpack_exports__);
       formData.append("description", this.description);
       axios.post("/api/movies", formData, config).then(function (response) {
         console.log(response); // Redirect to list of movies
+
+        window.location.href = "/movies";
       })["catch"](function (error) {
         console.log(error);
         console.log(error.response.data.data);
@@ -2073,8 +2075,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
 //
 //
 //
@@ -19711,7 +19711,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "h-screen bg-gray-900 text-white" }, [
+  return _c("div", { staticClass: "h-screen text-white" }, [
     _c("div", { staticClass: "flex flex-col" }, [
       _c("div", { staticClass: "bg-purple-500 px-16 py-4 w-full" }, [
         _c(
@@ -19740,7 +19740,7 @@ var render = function() {
       _c(
         "div",
         { staticClass: "flex w-full px-16 py-4" },
-        [_c("router-view", { staticClass: "p-6 overflow-x-hidden" })],
+        [_c("router-view", { staticClass: "p-6 overflow-x-hidden w-full" })],
         1
       )
     ])
@@ -19771,7 +19771,7 @@ var render = function() {
   return _c("div", [
     _c("p", [_vm._v("Create a New Movie")]),
     _vm._v(" "),
-    _c("div", [
+    _c("div", { staticClass: "px-48" }, [
       _c(
         "form",
         {
@@ -20096,22 +20096,31 @@ var render = function() {
       ? _c("div", [_vm._v("loading")])
       : _c(
           "div",
+          { staticClass: "grid grid-cols-4 gap-4" },
           _vm._l(_vm.movies, function(movie) {
-            return _c("div", { key: movie.id }, [
-              _c("div", { staticClass: "h-48 w-32" }, [
-                _c("img", { attrs: { src: movie.image } })
-              ]),
-              _vm._v(" "),
-              _c("div", [
-                _c("p", { staticClass: "text-lg" }, [
-                  _vm._v(_vm._s(movie.title))
-                ]),
+            return _c(
+              "div",
+              {
+                key: movie.id,
+                staticClass: "mx-2 border border-purple-500 rounded-md"
+              },
+              [
+                _c("img", {
+                  staticClass: "h-64 w-full object-cover",
+                  attrs: { src: movie.image }
+                }),
                 _vm._v(" "),
-                _c("p", { staticClass: "text-gray-500 text-sm" }, [
-                  _vm._v(_vm._s(movie.genre))
+                _c("div", { staticClass: "p-4" }, [
+                  _c("p", { staticClass: "text-lg" }, [
+                    _vm._v(_vm._s(movie.title))
+                  ]),
+                  _vm._v(" "),
+                  _c("p", { staticClass: "text-gray-500 text-sm" }, [
+                    _vm._v(_vm._s(movie.genre))
+                  ])
                 ])
-              ])
-            ])
+              ]
+            )
           }),
           0
         )
