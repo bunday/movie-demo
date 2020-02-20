@@ -1,7 +1,7 @@
 <template>
   <div>
     <p>Create a New Movie</p>
-    <div>
+    <div class="px-48">
       <form @submit="formSubmit" enctype="multipart/form-data">
         <div class="my-4">
           <p class="block text-gray-300 text-sm font-bold mb-2">Title</p>
@@ -148,6 +148,7 @@ export default {
         .then((response) => {
             console.log(response)
             // Redirect to list of movies
+            window.location.href="/movies"
         })
         .catch((error) => {
           console.log(error)
