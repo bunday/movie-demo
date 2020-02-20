@@ -8,7 +8,7 @@
         </div>
       </div>
       <div class="flex w-full px-16 py-4">
-        <router-view class="p-6 overflow-x-hidden"></router-view>
+        <router-view class="p-6 overflow-x-hidden w-full"></router-view>
       </div>
     </div>
   </div>
