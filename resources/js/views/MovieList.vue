@@ -1,12 +1,10 @@
 <template>
-  <div>
+  <div >
     <div v-if="loading">loading</div>
-    <div v-else>
-      <div v-for="movie in movies" v-bind:key="movie.id">
-        <div class="h-48 w-32">
-          <img :src="movie.image" />
-        </div>
-        <div>
+    <div class="grid grid-cols-4 gap-4" v-else>
+      <div class="mx-2 border border-purple-500 rounded-md" v-for="movie in movies" v-bind:key="movie.id">
+        <img class="h-64 w-full object-cover" :src="movie.image"/>
+        <div class="p-4">
           <p class="text-lg">{{ movie.title }}</p>
           <p class="text-gray-500 text-sm">{{ movie.genre }}</p>
         </div>
