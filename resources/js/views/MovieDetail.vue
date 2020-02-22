@@ -1,5 +1,6 @@
 <template>
-  <div class="flex mx-4 flex-col">
+    <div v-if="loading"> loading</div>
+  <div v-else class="flex mx-4 flex-col">
     <div class="flex flex-col md:flex-row">
       <img class="h-full w-full md:w-1/2 object-cover" :src="movie.image" />
       <div class="md:px-4 w-full md:w-1/2">

@@ -2189,6 +2189,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     var _this = this;
@@ -20256,143 +20257,165 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "flex mx-4 flex-col" }, [
-    _c("div", { staticClass: "flex flex-col md:flex-row" }, [
-      _c("img", {
-        staticClass: "h-full w-full md:w-1/2 object-cover",
-        attrs: { src: _vm.movie.image }
-      }),
-      _vm._v(" "),
-      _c("div", { staticClass: "md:px-4 w-full md:w-1/2" }, [
-        _c("div", { staticClass: "flex flex-col leading-loose" }, [
-          _c("p", { staticClass: "text-purple-500 font-bold text-lg" }, [
-            _vm._v(_vm._s(_vm.movie.title))
-          ]),
+  return _vm.loading
+    ? _c("div", [_vm._v(" loading")])
+    : _c("div", { staticClass: "flex mx-4 flex-col" }, [
+        _c("div", { staticClass: "flex flex-col md:flex-row" }, [
+          _c("img", {
+            staticClass: "h-full w-full md:w-1/2 object-cover",
+            attrs: { src: _vm.movie.image }
+          }),
           _vm._v(" "),
-          _c("p", { staticClass: "text-gray-500" }, [
-            _c("span", { staticClass: "text-gray-600" }, [_vm._v("Price:")]),
-            _vm._v("\n          NGN " + _vm._s(_vm.movie.price) + "\n        ")
-          ]),
-          _vm._v(" "),
-          _c("p", { staticClass: "text-gray-500" }, [
-            _c("span", { staticClass: "text-gray-600" }, [
-              _vm._v("Release Date:")
-            ]),
-            _vm._v(
-              "\n          " + _vm._s(_vm.movie.release_date) + "\n        "
-            )
-          ]),
-          _vm._v(" "),
-          _c("p", { staticClass: "text-gray-500" }, [
-            _c("span", { staticClass: "text-gray-600" }, [_vm._v("Country:")]),
-            _vm._v("\n          " + _vm._s(_vm.movie.country) + "\n        ")
-          ]),
-          _vm._v(" "),
-          _c("p", { staticClass: "text-gray-500" }, [
-            _c("span", { staticClass: "text-gray-600" }, [_vm._v("Genre:")]),
-            _vm._v("\n          " + _vm._s(_vm.movie.genre) + "\n        ")
-          ]),
-          _vm._v(" "),
-          _c("p", { staticClass: "text-gray-500" }, [
-            _c("span", { staticClass: "text-gray-600" }, [_vm._v("Rating:")]),
-            _vm._v("\n          " + _vm._s(_vm.movie.rating) + "/5\n        ")
-          ]),
-          _vm._v(" "),
-          _c("p", { staticClass: "text-gray-500 leading-tight" }, [
-            _c("span", { staticClass: "text-gray-600" }, [
-              _vm._v("Description:")
-            ]),
-            _vm._v(
-              "\n          " +
-                _vm._s(_vm.movie.description) +
-                " " +
-                _vm._s(_vm.movie.description) +
-                " " +
-                _vm._s(_vm.movie.description) +
-                " " +
-                _vm._s(_vm.movie.description) +
-                "\n        "
-            )
-          ])
-        ])
-      ])
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "py-4" }, [
-      _c("p", { staticClass: "text-white text-xl" }, [_vm._v("Comments")]),
-      _vm._v(" "),
-      _c("div", { staticClass: "flex flex-col md:flex-row" }, [
-        _c(
-          "div",
-          { staticClass: "md:w-1/2 w-full mx-2" },
-          [
-            _vm.movie.comments.length < 1
-              ? _c("div", [
-                  _vm._v("\n              No Comments yet ...\n          ")
-                ])
-              : _vm._l(_vm.movie.comments, function(comment) {
-                  return _c("div", { key: comment.id, staticClass: "py-2" }, [
-                    _c("p", [
-                      _c("span", { staticClass: "font-bold" }, [
-                        _vm._v(_vm._s(comment.name) + ":")
-                      ]),
-                      _vm._v(
-                        "\n            " +
-                          _vm._s(comment.content) +
-                          "\n          "
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("p", { staticClass: "text-sm text-right" }, [
-                      _vm._v(_vm._s(comment.created))
-                    ])
-                  ])
-                })
-          ],
-          2
-        ),
-        _vm._v(" "),
-        _c("div", { staticClass: "md:w-1/2 w-full mx-2" }, [
-          _c("form", { on: { submit: _vm.formSubmit } }, [
-            _c("div", { staticClass: "mb-4" }, [
-              _c(
-                "p",
-                { staticClass: "block text-gray-300 text-sm font-bold mb-2" },
-                [_vm._v("Add a New Comment")]
-              ),
+          _c("div", { staticClass: "md:px-4 w-full md:w-1/2" }, [
+            _c("div", { staticClass: "flex flex-col leading-loose" }, [
+              _c("p", { staticClass: "text-purple-500 font-bold text-lg" }, [
+                _vm._v(_vm._s(_vm.movie.title))
+              ]),
               _vm._v(" "),
-              _c("div", { staticClass: "flex" }, [
-                _c("textarea", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.comment,
-                      expression: "comment"
-                    }
-                  ],
-                  staticClass:
-                    "shadow appearance-none w-full border bg-gray-200 rounded py-2 px-3 text-gray-800 leading-tight focus:outline-none focus:shadow-outline",
-                  attrs: { rows: "5", required: "" },
-                  domProps: { value: _vm.comment },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.comment = $event.target.value
-                    }
-                  }
-                })
+              _c("p", { staticClass: "text-gray-500" }, [
+                _c("span", { staticClass: "text-gray-600" }, [
+                  _vm._v("Price:")
+                ]),
+                _vm._v(
+                  "\n          NGN " + _vm._s(_vm.movie.price) + "\n        "
+                )
+              ]),
+              _vm._v(" "),
+              _c("p", { staticClass: "text-gray-500" }, [
+                _c("span", { staticClass: "text-gray-600" }, [
+                  _vm._v("Release Date:")
+                ]),
+                _vm._v(
+                  "\n          " + _vm._s(_vm.movie.release_date) + "\n        "
+                )
+              ]),
+              _vm._v(" "),
+              _c("p", { staticClass: "text-gray-500" }, [
+                _c("span", { staticClass: "text-gray-600" }, [
+                  _vm._v("Country:")
+                ]),
+                _vm._v(
+                  "\n          " + _vm._s(_vm.movie.country) + "\n        "
+                )
+              ]),
+              _vm._v(" "),
+              _c("p", { staticClass: "text-gray-500" }, [
+                _c("span", { staticClass: "text-gray-600" }, [
+                  _vm._v("Genre:")
+                ]),
+                _vm._v("\n          " + _vm._s(_vm.movie.genre) + "\n        ")
+              ]),
+              _vm._v(" "),
+              _c("p", { staticClass: "text-gray-500" }, [
+                _c("span", { staticClass: "text-gray-600" }, [
+                  _vm._v("Rating:")
+                ]),
+                _vm._v(
+                  "\n          " + _vm._s(_vm.movie.rating) + "/5\n        "
+                )
+              ]),
+              _vm._v(" "),
+              _c("p", { staticClass: "text-gray-500 leading-tight" }, [
+                _c("span", { staticClass: "text-gray-600" }, [
+                  _vm._v("Description:")
+                ]),
+                _vm._v(
+                  "\n          " +
+                    _vm._s(_vm.movie.description) +
+                    " " +
+                    _vm._s(_vm.movie.description) +
+                    " " +
+                    _vm._s(_vm.movie.description) +
+                    " " +
+                    _vm._s(_vm.movie.description) +
+                    "\n        "
+                )
               ])
-            ]),
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "py-4" }, [
+          _c("p", { staticClass: "text-white text-xl" }, [_vm._v("Comments")]),
+          _vm._v(" "),
+          _c("div", { staticClass: "flex flex-col md:flex-row" }, [
+            _c(
+              "div",
+              { staticClass: "md:w-1/2 w-full mx-2" },
+              [
+                _vm.movie.comments.length < 1
+                  ? _c("div", [
+                      _vm._v("\n              No Comments yet ...\n          ")
+                    ])
+                  : _vm._l(_vm.movie.comments, function(comment) {
+                      return _c(
+                        "div",
+                        { key: comment.id, staticClass: "py-2" },
+                        [
+                          _c("p", [
+                            _c("span", { staticClass: "font-bold" }, [
+                              _vm._v(_vm._s(comment.name) + ":")
+                            ]),
+                            _vm._v(
+                              "\n            " +
+                                _vm._s(comment.content) +
+                                "\n          "
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("p", { staticClass: "text-sm text-right" }, [
+                            _vm._v(_vm._s(comment.created))
+                          ])
+                        ]
+                      )
+                    })
+              ],
+              2
+            ),
             _vm._v(" "),
-            _vm._m(0)
+            _c("div", { staticClass: "md:w-1/2 w-full mx-2" }, [
+              _c("form", { on: { submit: _vm.formSubmit } }, [
+                _c("div", { staticClass: "mb-4" }, [
+                  _c(
+                    "p",
+                    {
+                      staticClass: "block text-gray-300 text-sm font-bold mb-2"
+                    },
+                    [_vm._v("Add a New Comment")]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "flex" }, [
+                    _c("textarea", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.comment,
+                          expression: "comment"
+                        }
+                      ],
+                      staticClass:
+                        "shadow appearance-none w-full border bg-gray-200 rounded py-2 px-3 text-gray-800 leading-tight focus:outline-none focus:shadow-outline",
+                      attrs: { rows: "5", required: "" },
+                      domProps: { value: _vm.comment },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.comment = $event.target.value
+                        }
+                      }
+                    })
+                  ])
+                ]),
+                _vm._v(" "),
+                _vm._m(0)
+              ])
+            ])
           ])
         ])
       ])
-    ])
-  ])
 }
 var staticRenderFns = [
   function() {
